@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('allauth.urls')),
     path('', include('base.urls')),
+    #path('admin/', include('jazzmin.urls')),
 ]
 
 if settings.DEBUG:

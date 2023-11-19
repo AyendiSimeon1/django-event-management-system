@@ -1,0 +1,29 @@
+<!-- templates/yourapp/user_dashboard.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>User Dashboard</h2>
+  
+  <h3>Events Attending</h3>
+  {% if events_attending %}
+    <ul>
+      {% for event in events_attending %}
+        <li>{{ event.title }} - {{ event.date }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No events currently attending.</p>
+  {% endif %}
+
+  <h3>Notifications</h3>
+  {% if notifications %}
+    <ul>
+      {% for notification in notifications %}
+        <li>{{ notification.message }} - {{ notification.timestamp }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No notifications.</p>
+  {% endif %}
+{% endblock %}

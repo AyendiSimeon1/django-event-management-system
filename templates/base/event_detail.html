@@ -1,0 +1,28 @@
+<!-- templates/yourapp/event_detail.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ event.title }}</h2>
+  <p>{{ event.description }}</p>
+  <p>Date: {{ event.date }}</p>
+  <p>Location: {{ event.location }}</p>
+
+  <h3>Tickets</h3>
+  <ul>
+    {% for ticket in tickets %}
+      <li>{{ ticket.name }} - ${{ ticket.price }} ({% if ticket.quantity_available == 0 %}Sold Out{% else %}Available{% endif %})</li>
+    {% endfor %}
+  </ul>
+
+  <form method="post" action="{% url 'event_registration' pk=event.pk %}">
+    {% csrf_token %}
+    <label for="ticket">Select a Ticket:</label>
+    <select name="ticket" id="ticket">
+      {% for ticket in tickets %}
+        <option value="{{ ticket.pk }}">{{ ticket.name }} - ${{ ticket.price }} ({% if ticket.quantity_available == 0 %}Sold Out{% else %}Available{% endif %})</option>
+      {% endfor %}
+    </select>
+    <button type="submit">Register</button>
+  </form>
+{% endblock %}
