@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Event, Ticket, Attendee, Notification, UserProfile
+from .models import Event, Ticket, Attendee, Notification, UserProfile, Category
 
 class TicketAdmin(admin.ModelAdmin):
     list_display = ('name', 'event', 'price', 'quantity_available')
@@ -16,9 +16,13 @@ class NotificationAdmin(admin.ModelAdmin):
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ('user',)
 
-    filter_horizontal = ('events_attending', 'notifications')
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+   
 
 admin.site.register(Event, EventAdmin)
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(Ticket, TicketAdmin)
 admin.site.register(Attendee, AttendeeAdmin)
 admin.site.register(Notification, NotificationAdmin)

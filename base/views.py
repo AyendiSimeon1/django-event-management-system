@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Event, Ticket, Attendee
+from .models import Event, Ticket, Attendee, Category
 from .forms import EventRegistrationForm
 #from .recommendation_system import EventRecommender
 
@@ -11,7 +11,14 @@ def home(request):
 
 def event_list(request):
     events = Event.objects.all()
-    return render(request, 'base/event_list.html', {'events': events})
+    categories = Category.objects.all()
+
+    context = {
+        'events': events,
+        'categories': categories,
+
+    }
+    return render(request, 'base/event_list.html', context)
 
 def event_detail(request, pk):
     event = get_object_or_404(Event, pk=pk)
@@ -19,9 +26,15 @@ def event_detail(request, pk):
     return render(request, 'base/event_detail.html', {'event': event, 'tickets': tickets})
 
 @login_required
-def event_registration(request, pk):
+def event_registration(request, pk, category_slug=None):
     event = get_object_or_404(Event, pk=pk)
     ticket_id = request.POST.get('ticket_id')
+    categories = Category.objects.all()
+
+
+    if category_slug:
+        category = Category.objects.get(slug=category_slug)
+        events = events.filter(category=category)
 
     if ticket_id:
         ticket = get_object_or_404(Ticket, pk=ticket_id)

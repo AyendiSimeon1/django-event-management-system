@@ -13,5 +13,6 @@ urlpatterns = [
     path('events/<int:pk>/', event_detail, name='event_detail'),
     path('events/<int:pk>/register/', event_registration, name='event_registration'),
     path('dashboard/', user_dashboard, name='user_dashboard'),
-    # Add more URLs as needed
+    path('<slug:category_slug>/', event_list, name='event_list_by_category'),
+    
 ]

@@ -1,10 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
-
-# models.py
-
 from django.db import models
 from django.contrib.auth.models import User
+
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+    
+    image = models.ImageField(upload_to='event_images/', blank=True, null=True)
+    slug = models.SlugField(unique=True, null=True)
+
+    def save(self, *args, **kwargs):
+
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
 
 class Event(models.Model):
     title = models.CharField(max_length=255)
@@ -12,6 +22,17 @@ class Event(models.Model):
     date = models.DateTimeField()
     location = models.CharField(max_length=255)
     organizer = models.ForeignKey(User, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    
+    image = models.ImageField(upload_to='event_image/', blank=True, null=True)
+
+    slug = models.SlugField(unique=True, null=True)
+
+    def save(self, *args, **kwargs):
+        # Automatically generate a slug when saving the product
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title
