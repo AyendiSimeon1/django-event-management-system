@@ -3,8 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Event, Ticket, Attendee, Category
-from .forms import EventRegistrationForm
-#from .recommendation_system import EventRecommender
+from .forms import EventRegistrationForm, EventCreationForm
 
 def home(request):
     return render(request, 'base/home.html')
@@ -20,8 +19,10 @@ def event_list(request):
     }
     return render(request, 'base/event_list.html', context)
 
-def event_detail(request, pk):
-    event = get_object_or_404(Event, pk=pk)
+#def category_detail(request, catego)
+
+def event_detail(request, slug):
+    event = get_object_or_404(Event, slug=slug)
     tickets = Ticket.objects.filter(event=event)
     return render(request, 'base/event_detail.html', {'event': event, 'tickets': tickets})
 
@@ -108,3 +109,60 @@ def event_registration(request, pk):
         form = EventRegistrationForm(event_id=pk)
 
     return render(request, 'base/event_registration.html', {'form': form, 'event': event})
+
+def create_event(request):
+    if request.method == 'POST':
+        form = EventCreationForm(request.POST)
+
+        if form.is_valid():
+            event = form.save()
+            print("Event created successfully:", event)
+            return redirect('event_list')
+        else:
+            # Print form errors for debugging
+            print("Form errors:", form.errors)
+    else:
+        form = EventCreationForm()
+    context = {
+        'form':form,
+
+    }
+    return render(request, 'base/event_creation.html', context)
+
+def update_event(request,  slug):
+    #event =  get_object_or_404(Event, )
+    events = get_object_or_404(Event, slug=slug)
+    if request.method == 'POST':
+        form = EventCreationForm(request.POST, instance=events)
+
+        if form.is_valid():
+            event = form.save()
+            print("Updated Successfully")
+
+            return redirect('event_list')
+        else:
+            print("There was an error")
+
+    else:
+    
+        form  = EventCreationForm(instance=events)
+    context = {
+        'form':form,
+        'events':events,
+    }
+    return render(request, 'base/update_event.html', context)
+
+def delete_event(request, slug):
+
+    event = get_object_or_404(Event, slug=slug)
+
+    if request.method == 'POST':
+        event.delete()
+
+        return redirect('event_list')
+
+    context = {
+
+        'event':event,
+    }
+    return render(request, 'base/delete_event.html', context)

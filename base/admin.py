@@ -9,6 +9,7 @@ class AttendeeAdmin(admin.ModelAdmin):
 
 class EventAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'date', 'location')
+    prepopulated_fields = {'slug': ('title',)}
 
 class NotificationAdmin(admin.ModelAdmin):
     list_display = ('user', 'message', 'timestamp')

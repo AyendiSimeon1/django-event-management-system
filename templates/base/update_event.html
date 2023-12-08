@@ -1,0 +1,12 @@
+
+<h2>Edit Event</h2>
+<h1>{{ events.id }}</h1>
+<h1>{{ events.title }}</h1>
+
+<form method="POST"> 
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Update</button>
+
+</form>

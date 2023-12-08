@@ -96,7 +96,7 @@
       <div class="event-card">
         <img src="{% static "img/img1.jpg" %}" alt="Event Image">
         <div class="event-card-body">
-          <a href="{% url 'event_detail' pk=event.pk %}"><h5 class="event-title">{{ event.title }}</h5></a>
+          <a href="{% url 'event_detail' slug=event.slug %}"><h5 class="event-title">{{ event.title }}</h5></a>
           <p class="event-date">{{ event.date }}</p>
           <p class="event-date">{{ event.organizer }}</p>
           <p class="event-description">{{ event.location }}</p>
@@ -116,7 +116,7 @@
       <div class="event-card">
         <img src="{% static "img/img1.jpg" %}" alt="Event Image">
         <div class="event-card-body">
-          <a href="{% url 'event_detail' pk=event.pk %}"><h5 class="event-title">{{ event.title }}</h5></a>
+          <a href="{% url 'event_detail' slug=event.slug %}"><h5 class="event-title">{{ event.title }}</h5></a>
           <p class="event-date">{{ event.date }}</p>
           <p class="event-date">{{ event.organizer }}</p>
           <p class="event-description">{{ event.location }}</p>

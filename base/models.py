@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
+from django.utils.text import slugify
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -36,6 +39,10 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("event_detail", kwargs={"slug": self.slug})
+    
 
 class Ticket(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)

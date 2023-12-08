@@ -5,14 +5,20 @@ from .views import (
     event_detail,
     event_registration,
     user_dashboard,
+    create_event,
+    update_event,
+    delete_event,
 )
 
 
 urlpatterns = [
     path('', event_list, name='event_list'),
-    path('events/<int:pk>/', event_detail, name='event_detail'),
-    path('events/<int:pk>/register/', event_registration, name='event_registration'),
+    path('events/<slug:slug>/', event_detail, name='event_detail'),
+    path('events/<slug:slug>/register/', event_registration, name='event_registration'),
+    path('events/create_event/', create_event, name='create_event'),
     path('dashboard/', user_dashboard, name='user_dashboard'),
     path('<slug:category_slug>/', event_list, name='event_list_by_category'),
-    
+    path('events/update_event/<slug:slug>/', update_event, name='update_event'),
+    path('events/delete_event/<slug:slug>/', delete_event, name='delete_event'),
+  
 ]
