@@ -1,7 +1,12 @@
+{% extends "../base.html" %}
+{% load crispy_forms_tags %}
 
+{% block content %}
+{% include "../navbar.html" %}
 <h2>Create Event</h2>
 <form method="POST" action="{% url 'create_event' %}">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form|crispy }}
     <button type="submit">Create Event</button>
 </form>
+{% endblock  %}

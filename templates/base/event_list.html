@@ -12,102 +12,61 @@
       <div class="hero-text">
         <h1>Your Event, Our Expertise</h1>
         <p class="lead">Plan and execute memorable events with our professional event management services. From conferences to weddings, we ensure perfection in every detail.</p>
-        <button class="btn btn-secondary">Find The Next Event</button>
+        <button class="btn btn-secondary">Create Your Event</button>
       </div>
     </div>
     <div class="col-md-6">
       <div class="hero-image">
-        <img src="{% static "img/img1.jpg" %}" alt="Event Image">
+        <img src="{% static "img/event.jpg" %}" alt="Event Image">
       </div>
     </div>
   </div>
-<br />
-<h1>This is the categories</h1>
-<div id="categories">
- 
-  {% for category in categories %}
-  
-    <a href="">{{ category.name }}</a>
-  {% endfor %}
-</div>
 
-<div class="events-container">
-  {% for event in events %}
-    <div class="event">
-      <h3>{{ event.title }}</h3>
-      <p>{{ event.description }}</p>
+
+
+  <div class="container-fluid">
+    <div class="category-section">
+     
+     
+        {% for c in categories %}
+        <div class="round-card">
+          <a href="#">
+            <img src="{{ c.image.url }}" alt="Category">
+          </a>
+          
+        </div>
+        <p>{{ c.name }}</p>
+      {% endfor %}
     </div>
-  {% endfor %}
-</div>
-  <div class="row justify-content-center">
-
-    <!-- Round Card 1 -->
+   
     
-    <div class="col-md-2">
-      <div class="round-card">
-        <a href="#">
-        <img src="{% static "img/img1.jpg" %}" alt="Card Image 1">
-        </a>
-      </div>
-      <h3 class="card-title">Music</h3>
-    </div>
-
-    <!-- Round Card 2 -->
-    <div class="col-md-2">
-      <div class="round-card">
-        <img src="{% static "img/img1.jpg" %}" alt="Card Image 2">
-      </div>
-      <h3 class="card-title">Education</h3>
-    </div>
-
-    <!-- Round Card 3 -->
-    <div class="col-md-2">
-      <div class="round-card">
-        <img src="{% static "img/img1.jpg" %}" alt="Card Image 3">
-      </div>
-      <h3 class="card-title">Health</h3>
-    </div>
-
-    <!-- Round Card 4 -->
-    <div class="col-md-2">
-      <div class="round-card">
-        <img src="{% static "img/img1.jpg" %}" alt="Card Image 4">
-      </div>
-      <h3 class="card-title">Bussiness</h3>
-    </div>
-
-    <!-- Round Card 5 -->
-    <div class="col-md-2">
-      <div class="round-card">
-        <img src="{% static "img/img1.jpg" %}" alt="Card Image 5">
-      </div>
-      <h3 class="card-title">Holiday</h3>
-    </div>
-
-  </div>
+   
 </div>
-<br />
-
+<section>
 <div class="container">
   <div class="row">
-    <h2>Recommended Events </h2>
-  {% for event in events %}
-    <div class="col-md-4">
-      <div class="event-card">
-        <img src="{% static "img/img1.jpg" %}" alt="Event Image">
-        <div class="event-card-body">
-          <a href="{% url 'event_detail' slug=event.slug %}"><h5 class="event-title">{{ event.title }}</h5></a>
-          <p class="event-date">{{ event.date }}</p>
-          <p class="event-date">{{ event.organizer }}</p>
-          <p class="event-description">{{ event.location }}</p>
-          <p class="lead">Free</p>
+    
+      <h2>Trending Events</h2>
+    {% for event in events %}
+      <div class="col-md-3">
+        <div class="event-card">
+          <img src="{% static "img/img1.jpg" %}" alt="Event Image">
+          <div class="event-card-body">
+            <a href="{% url 'event_detail' slug=event.slug %}"><p class="event-title">{{ event.title }}</p></a>
+            
+            <p class="event-date">{{ event.date }}</p>
+            
+          </div>
         </div>
       </div>
-    </div>
-    {% endfor %}
+      {% endfor %}
+
 
   </div>
 </div>
+</section>
+
+<section>
 <div class="container">
   <div class="row">
     <h2>Top Events </h2>
@@ -128,21 +87,17 @@
 
   </div>
 </div>
-
-
-
-
+</div>
+</section>
 
 <footer class="footer">
   <div class="container">
     <div class="row">
 
-      <!-- Footer Logo -->
       <div class="col-md-3">
         <span class="footer-logo">Eventsync</span>
       </div>
 
-      <!-- Quick Links -->
       <div class="col-md-3">
         <h5>Quick Links</h5>
         <ul class="footer-links">
@@ -153,22 +108,20 @@
         </ul>
       </div>
 
-      <!-- Social Media -->
       <div class="col-md-3">
         <h5>Follow Us</h5>
         <div class="footer-social">
-          <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
           <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
           <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
 
-      <!-- Contact Information -->
       <div class="col-md-3">
         <h5>Contact Us</h5>
         <p class="footer-text">
-          Address: 143 Event Street, City, Country<br>
-          Phone: (555) 123-4567<br>
+          
+          Phone: (234) 907 575-4477<br>
           Email: info@eventsync.com
         </p>
       </div>

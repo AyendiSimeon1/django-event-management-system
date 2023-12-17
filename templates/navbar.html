@@ -10,7 +10,9 @@
       <button class="btn btn-secondary search-btn" type="submit">Search</button>
     </form>
     
-    <button class="btn btn-secondary login-btn">Login</button>
-    <button class="btn btn-secondary signup-btn">Sign Up</button>
+    <button class="btn btn-secondary login-btn">
+      <a href="{% url "account_login" %}">Login</a>
+    </button>
+    <button class="btn btn-secondary signup-btn"><a href=" {% url "account_signup" %}">Sign Up</a></button>
   </div>
 </nav>

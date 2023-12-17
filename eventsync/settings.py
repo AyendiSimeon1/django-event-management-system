@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'accounts',
     'jazzmin',
     'base',
-
+    'crispy_forms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -169,3 +169,5 @@ LOGIN_REDIRECT_URL = '/'
 # Set the email confirmation method
 ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = LOGIN_URL
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = LOGIN_REDIRECT_URL
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

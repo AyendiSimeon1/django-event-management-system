@@ -13,9 +13,11 @@ from .views import (
 
 urlpatterns = [
     path('', event_list, name='event_list'),
-    path('events/<slug:slug>/', event_detail, name='event_detail'),
-    path('events/<slug:slug>/register/', event_registration, name='event_registration'),
     path('events/create_event/', create_event, name='create_event'),
+    path('events/<slug:slug>/', event_detail, name='event_detail'),
+    
+    path('events/<slug:slug>/register/', event_registration, name='event_registration'),
+    
     path('dashboard/', user_dashboard, name='user_dashboard'),
     path('<slug:category_slug>/', event_list, name='event_list_by_category'),
     path('events/update_event/<slug:slug>/', update_event, name='update_event'),
