@@ -21,6 +21,7 @@ class Category(models.Model):
 
 class Event(models.Model):
     title = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True, null=True)
     description = models.TextField()
     date = models.DateTimeField()
     location = models.CharField(max_length=255)
@@ -29,7 +30,7 @@ class Event(models.Model):
     
     image = models.ImageField(upload_to='event_image/', blank=True, null=True)
 
-    slug = models.SlugField(unique=True, null=True)
+    
 
     def save(self, *args, **kwargs):
         # Automatically generate a slug when saving the product

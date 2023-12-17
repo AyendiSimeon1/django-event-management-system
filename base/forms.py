@@ -15,4 +15,4 @@ class EventRegistrationForm(forms.ModelForm):
 class EventCreationForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = '__all__'
+        fields  = ['title', 'description', 'date', 'location', 'organizer', 'category', 'image']
