@@ -311,3 +311,8 @@ section {
   font-size: 14px;
   margin-top: 20px;
 }
+
+.sign-in {
+  margin: 50px;
+  padding: 10px;
+}
