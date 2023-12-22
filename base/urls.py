@@ -8,6 +8,7 @@ from .views import (
     create_event,
     update_event,
     delete_event,
+    category_detail,
 )
 
 
@@ -22,5 +23,6 @@ urlpatterns = [
     path('<slug:category_slug>/', event_list, name='event_list_by_category'),
     path('events/update_event/<slug:slug>/', update_event, name='update_event'),
     path('events/delete_event/<slug:slug>/', delete_event, name='delete_event'),
+    path('category/<slug:slug>/', category_detail, name='category_detail'),
   
 ]

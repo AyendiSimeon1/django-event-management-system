@@ -1,0 +1,25 @@
+{% extends "../base.html" %}
+
+{% block content %}
+
+<div class='container'>
+    <div class='row'>
+        <h3>{{ category.name }}</h3>
+        {% for p in posts_in_category %}
+      <div class="col-md-3">
+        <a href="{% url "event_detail" slug=p.slug %}">
+        <div class="event-card">
+          <img src="{{ p.image.url }}" alt="Event Image">
+          <div class="event-card-body">
+            <h1 class="lead">{{ p.title }}</h1>
+            {{p.title}}</a>
+            <p class="event-date">{{ p.date }}</p>
+            
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+</div>
+
+{% endblock  %}

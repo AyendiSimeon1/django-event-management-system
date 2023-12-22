@@ -5,6 +5,54 @@
   <p>{{ event.description }}</p>
   <p>Date: {{ event.date }}</p>
   <p>Location: {{ event.location }}</p>
+  
+
+<main class="p-6">
+  <div
+    class="border text-card-foreground max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
+    data-v0-t="card"
+  >
+    <img
+      src="/placeholder.svg"
+      alt="Event related"
+      class="w-full h-64 object-cover"
+      width="800"
+      height="200"
+      style="aspect-ratio: 800 / 200; object-fit: cover;"
+    />
+    <div class="sm:flex sm:items-center px-6 py-4">
+      <div class="mb-4 flex-shrink-0 sm:mb-0 sm:mr-4">
+        <span
+          class="relative flex shrink-0 overflow-hidden h-16 w-16 rounded-full"
+          src="/placeholder.svg?height=80&amp;width=80"
+        ></span>
+      </div>
+      <div class="text-center sm:text-left sm:flex-grow">
+        <div class="mb-2">
+          <span class="text-xl leading-tight">Event Title</span>
+          <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 w-fit text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/80 ml-2">
+            Category
+          </div>
+        </div>
+        <p class="text-sm leading-tight text-gray-600">Date: 12th December 2023</p>
+        <p class="text-sm leading-tight text-gray-600">Time: 10:00 AM - 5:00 PM</p>
+        <p class="text-sm leading-tight text-gray-600">Location: New York City</p>
+      </div>
+    </div>
+    <div class="p-6 px-6 py-4">
+      <p class="text-gray-700 text-base">
+        This is an event description. It provides details about the event and what attendees should expect.
+      </p>
+    </div>
+    <div class="flex items-center p-6 px-6 py-4">
+      <button class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 mr-2">
+        Register
+      </button>
+      <a class="text-blue-500 hover:text-blue-700 text-sm" href="#">
+        Learn More
+      </a>
+    </div>
+  </div>
 
   <h3>Tickets</h3>
   <ul>

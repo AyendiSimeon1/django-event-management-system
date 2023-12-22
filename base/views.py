@@ -5,9 +5,6 @@ from django.contrib.auth.decorators import login_required
 from .models import Event, Ticket, Attendee, Category
 from .forms import EventRegistrationForm, EventCreationForm
 
-def home(request):
-    return render(request, 'base/home.html')
-
 def event_list(request):
     events = Event.objects.all()
     categories = Category.objects.all()
@@ -19,13 +16,19 @@ def event_list(request):
     }
     return render(request, 'base/event_list.html', context)
 
-#def category_detail(request, catego)
-
 def event_detail(request, slug):
     event = get_object_or_404(Event, slug=slug)
     tickets = Ticket.objects.filter(event=event)
     return render(request, 'base/event_detail.html', {'event': event, 'tickets': tickets})
 
+def category_detail(request, slug):
+    category = get_object_or_404(Category, slug=slug)
+    posts_in_category = Event.objects.filter(category=category)
+    context = {
+        'category':category,
+        'posts_in_category':posts_in_category,
+    }
+    return render(request, 'base/category_detail.html', context)
 @login_required
 def event_registration(request, pk, category_slug=None):
     event = get_object_or_404(Event, pk=pk)
